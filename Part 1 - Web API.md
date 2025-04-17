@@ -3,8 +3,33 @@
 **Prerequisite**: Basic knowledge of .NET Core and WebAPI
 # Part 1: Web API project
 
-## Add following code in Program.cs file
+## Step 1: Add following packages
+While installing packages make sure your laptop/pc .net framwork matches with packages
+ - Microsoft.IdentityModel.Tokens;
+ - Microsoft.AspNetCore.Authentication.JwtBearer
+ - Newtonsoft.Json
 
+## Step 2: Add following code in appsettings.json file 
+JWT configuration settings for token generation and validation
+```csharp
+"Jwt": 
+ {
+  // The secret key used to sign and verify the JWT token
+  // Must be kept secure and not exposed in source control
+  "Key": "ThisIsASecretKeyForJwtTokenGeneration",
+
+  // The issuer of the token, identifying the server that generated it
+  // Typically the URL of the application (e.g., your API's domain)
+  "Issuer": "https://localhost:5001",
+
+  // The audience of the token, identifying the intended recipients
+  // Usually matches the issuer or specifies authorized clients
+  "Audience": "https://localhost:5001"
+}
+```
+
+## Step 3: Add following code in Program.cs file
+Configures JWT authentication for the application
 ```csharp
 // Configures JWT authentication for the application
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme) // Sets JWT Bearer as the default authentication scheme
