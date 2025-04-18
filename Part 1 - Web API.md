@@ -84,7 +84,7 @@ public class Student
     public IFormFile? File { get; set; } // Uploaded image file
 }
 ```
-## Step 5: Add 'ImageHelper' utility class for handling image file operations
+## Step 5: Add `ImageHelper` utility class for handling image file operations
 ```csharp
 public static class ImageHelper
 {
