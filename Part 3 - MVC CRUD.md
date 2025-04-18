@@ -57,8 +57,8 @@ public class HomeController : Controller
             TempData["ErrorMessage"] = "Unable to fetch customer data. Please try again later.";
         }
 
-        // If error, redirect to Dashboard view
-        return View("Dashboard");
+        // If error, redirect to Index view
+        return View("Index");
     }
 
     // Displays the Add/Edit student form
