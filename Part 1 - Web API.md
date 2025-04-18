@@ -63,7 +63,7 @@ builder.Services.AddAuthorization();
 ```
 Add following code after   var app = builder.Build();
 ```csharp
-Enable static file middleware that will be helpful to access `wwwroot` folder.
+//Enable static file middleware that will be helpful to access `wwwroot` folder.
 app.UseStaticFiles();
 ```
 
