@@ -63,7 +63,7 @@ public class HomeController : Controller
 
     // Displays the Add/Edit student form
     [HttpGet]
-    public async Task<IActionResult> AddStudent(int? StudentID)
+    public async Task<IActionResult> StudentAddEdit(int? StudentID)
     {
         // If StudentID is present, fetch student details from API
         if (StudentID != null && StudentID > 0)
@@ -80,12 +80,12 @@ public class HomeController : Controller
                 // Deserialize the result into a Student object
                 student = JsonConvert.DeserializeObject<Student>(result);
 
-                return View("AddStudent", student);
+                return View("StudentAddEdit", student);
             }
         }
 
         // If new student or fetch failed, return empty form
-        return View("AddStudent");
+        return View("StudentAddEdit");
     }
 
     // Deletes a student by ID
@@ -140,7 +140,7 @@ public class HomeController : Controller
             {
                 // If it's a new student
                 TempData["SuccessMessage"] = "Record Saved Successfully";
-                return RedirectToAction("AddStudent");
+                return RedirectToAction("StudentAddEdit");
             }
         }
         else
@@ -148,7 +148,7 @@ public class HomeController : Controller
             TempData["ErrorMessage"] = "Error Occured";
 
             // Reload the form with current student data
-            return View("AddStudent", student);
+            return View("StudentAddEdit", student);
         }
     }
 
@@ -229,7 +229,7 @@ public class HomeController : Controller
     {
         <div class="alert alert-success">@TempData["SuccessMessage"]</div>
     }
-    <a asp-action="AddStudent" class="btn btn-success">Add Student</a>
+    <a asp-action="StudentAddEdit" class="btn btn-success">Add Student</a>
     <div class="container mt-4">
         <h3 class="mb-3">Student List</h3>
         <table class="table table-bordered table-hover align-middle">
@@ -250,7 +250,7 @@ public class HomeController : Controller
                         <td>
                             <img src="@student.FilePath" alt="Student Image" class="img-thumbnail" style="max-height: 100px;">
                         </td>
-                        <td><a asp-action="AddStudent" class="btn btn-primary" asp-route-studentID="@student.StudentID">Edit</a></td>
+                        <td><a asp-action="StudentAddEdit" class="btn btn-primary" asp-route-studentID="@student.StudentID">Edit</a></td>
                         <td>
                             <form asp-action="Delete" method="post">
                                 <input type="hidden" name="StudentID" value="@student.StudentID" />
