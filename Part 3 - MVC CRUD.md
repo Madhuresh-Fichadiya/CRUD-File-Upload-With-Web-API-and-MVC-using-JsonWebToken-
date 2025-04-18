@@ -1,7 +1,7 @@
 # Complete CRUD with Jwt authentication and File upload
 
-**Prerequisite**: Prerequisite: Part 1 - Web API, Part 2 - MVC Session Management
-# Part 3: MVC CRUD Operation
+**Prerequisite**: Part 1 - Web API, Part 2 - MVC Session Management
+# Part 3: MVC CRUD Operation (Continue in MVC Session Management Project)
 
 ## Step 1: Create Model Class
 
